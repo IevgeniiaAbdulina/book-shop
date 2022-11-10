@@ -1,0 +1,29 @@
+/* FOOTER BLOCK STYLE */
+footer {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container {
+    width: 1200px;
+    height: auto;
+    padding: 0 15px;
+    margin: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrows {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrows img {
+    width: 20px;
+    height: 20px;
+}

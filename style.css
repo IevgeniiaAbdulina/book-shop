@@ -13,9 +13,11 @@
         * Header
         * Catalog
         * Book card
+        * Footer
 -------------------------------------------------*/
 
 @import url(./styles/body.css);
 @import url(./styles/header-style.css);
 @import url(./styles/catalog-style.css);
 @import url(./styles/book-card-style.css);
+@import url(./styles/footer.css);

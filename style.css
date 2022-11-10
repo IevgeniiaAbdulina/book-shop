@@ -1,156 +1,21 @@
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/*-------------------------------------------------
+    [Main Stylesheet]
 
-body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    scroll-behavior: smooth;
-}
+    Project:    Book Shop Web Project
+    Version:    1.0.0
+    Challenge:  RS School
+    Coded:      Ievgeniia Abdulina
+    Date:       10-11-2022
+-------------------------------------------------*/
+/*-------------------------------------------------
+    ==== File Structure  ====
+        * Body
+        * Header
+        * Catalog
+        * Book card
+-------------------------------------------------*/
 
-.header-container {
-    width: 1200px;
-    height: auto;
-    padding: 0 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-h1 {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
-    text-transform: uppercase;
-
-    margin: 24px 0;
-    color: #000000;
-}
-
-.header-divider {
-    width: 100%;
-    height: 2px;
-    background: #393939;
-}
-
-/*  MAIN SECTION STYLE */
-main {
-    width: 100%;
-    height: 100%;
-}
-
-.catalog-container {
-    max-width: 100%;
-    margin: 18px 0 30px;
-}
-
-.catalog-content {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-/* BOOK CARD STYLE */
-.book-card {
-    width: 247px;
-    height: 487px;
-    background: transparent;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-img {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid black;
-}
-
-.text-container {
-    width: 100%;
-    height: 100%;
-    padding: 10px 10px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.book-author {
-    width: 100%;
-    height: 38px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-overflow: ellipsis;
-}
-
-.book-author p {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
-    white-space: normal;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.book-title {
-    width: 100%;
-    height: 40px;
-    margin: 10px 0;
-    display: flex;
-    justify-content: center;
-}
-
-.book-title h2 {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 22px;
-    text-align: center;
-    white-space: normal;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #000000;
-}
-
-
-
-.buy-button {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    text-transform: uppercase;
-    border: 1px solid #000000;
-    color: #212121;
-}
-
-.buy-button > p > span {
-    font-weight: 700;
-}
+@import url(./styles/body.css);
+@import url(./styles/header-style.css);
+@import url(./styles/catalog-style.css);
+@import url(./styles/book-card-style.css);

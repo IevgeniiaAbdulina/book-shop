@@ -1,5 +1,5 @@
 import { createHeaderElement } from './modules/header.js';
-import { books } from './data/test-books.js';
+// import './data/books.json';
 import { createBookCard } from './modules/book-card.js';
 import { createCatalogElement } from './modules/catalog.js';
 import { createFooterElements } from './modules/footer.js';
@@ -20,9 +20,15 @@ window.onload = () => {
 
 // Add element to parent element:
 const fetchBooks = (parentDiv) => {
-    const bookDivs = books.map(book => {
-        return createBookCard(book);
-    });
+    fetch('./data/books.json')
+        .then(response => {
+            return response.json();
+        })
+        .then(books => {
+            const bookDivs = books.map(book => {
+                return createBookCard(book);
+            });
 
-    parentDiv.append(...bookDivs);
+            parentDiv.append(...bookDivs);
+        });
 }

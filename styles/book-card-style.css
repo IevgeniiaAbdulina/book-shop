@@ -9,10 +9,10 @@
     align-items: center;
 }
 
-img {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid black;
+.book-card img {
+    width: 247px;
+    height: 324px;
+    border: 1px solid black;
 }
 
 .text-container {

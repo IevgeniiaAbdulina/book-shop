@@ -16,4 +16,12 @@ body {
     flex-direction: column;
     align-items: center;
     scroll-behavior: smooth;
+
+    font-family: var(--font-family-base);
+    font-style: normal;
+    font-weight: var(--font-weight-base);
+    font-size: var(--font-size-base);
+    line-height: 22px;
+    color: var(--black-red);
+    background-color: var(--white);
 }

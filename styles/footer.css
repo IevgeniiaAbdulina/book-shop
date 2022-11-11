@@ -15,8 +15,16 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
 }
 
+.nav-description {
+    width: 14rem;
+}
+/*
 .arrows {
     width: 80px;
     display: flex;
@@ -26,4 +34,4 @@ footer {
 .arrows img {
     width: 20px;
     height: 20px;
-}
+} */

@@ -1,0 +1,29 @@
+/*-------------------------------------------------*/
+/* Variables */
+:root {
+    /* ## Layouts */
+    --layout-desktop: 1600px;
+    --layout-guides: 1200px;
+    /* --layout-guides: 1160px; */
+
+    /* ## Colors */
+        /* ### Primary */
+        --black-red: #372C2B;
+        --coconut-cream: #E4C6B5;
+        --desert-storm: #F0e6db;
+        --sunset: #CC4541;
+        --green: #6A8279;
+        --white: #FFFFFF;
+        --black: #000000;
+
+        /* ### Gradients */
+        /* ### Secondary */
+        /* #### Text */
+
+    /* ## Typography  */
+        /* ### Fonts */
+    --font-family-base: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    --font-weight-base: 400;
+    --font-size-base: 16px;
+}
+/*-------------------------------------------------*/

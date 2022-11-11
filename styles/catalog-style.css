@@ -17,7 +17,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem 3.75rem;
 }
 
 .catalog-nav {
@@ -33,11 +33,12 @@ main {
     align-items: center;
     justify-content: space-between;
     background: #FFFFFF;
-    border: 1px solid #000000;
+    border-radius: 8px;
+    border: 1px solid var(--green);
 }
 
 .bag-button:hover {
-    background: #D9D9D9;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .bag-text{
@@ -47,35 +48,30 @@ main {
 
 .bag-text p {
     order: 2;
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 22px;
     text-transform: uppercase;
+    padding: 3px 0 0;
     color: #000000;
 }
 
 .bag-text img {
     order: 1;
     margin-right: 10px;
+    filter: invert(48%) sepia(26%) saturate(220%) hue-rotate(106deg) brightness(97%) contrast(91%);
 }
 
 .books-count {
-    min-width: 48px;
+    min-width: 31px;
     min-height: 31px;
     padding: 2px 5px;
-    background: #393939;
+    background: var(--green);
     border-radius: 16px;
 
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: white;
 }

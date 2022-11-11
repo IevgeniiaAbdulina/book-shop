@@ -1,5 +1,7 @@
 // Book Card Element
-const createBookCard = (book) => {
+// // Event called on Buy Button Click event and callback parametr is a book element
+
+const createBookCard = (book, callback) => {
     let divBookCard = document.createElement('div');
     divBookCard.className = 'book-card';
 
@@ -16,9 +18,10 @@ const createBookCard = (book) => {
     divAuthor.className = 'book-author';
     divAuthor.innerHTML = `<p>${book.author}</p>`;
 
-    let divBuyButton = document.createElement('div');
+    let divBuyButton = document.createElement('button');
     divBuyButton.className = 'buy-button';
-    divBuyButton.innerHTML = `<p>Buy Button <span>$ ${book.price}</span></p>`;
+    divBuyButton.innerHTML = `<p>Add to bag <span>$ ${book.price}</span></p>`;
+    divBuyButton.addEventListener('click', event => callback(book));
 
     let divTextContainer = document.createElement('div');
     divTextContainer.className = 'text-container';

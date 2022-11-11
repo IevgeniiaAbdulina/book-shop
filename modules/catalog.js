@@ -1,5 +1,5 @@
 //  Create Catalog Element:
-function createCatalogElement(parent) {
+function createCatalogElement(parent, shoppingBag) {
     const createDiv = (className) => {
         let elem = document.createElement('div');
         if (!className) return elem;
@@ -9,7 +9,8 @@ function createCatalogElement(parent) {
 
     const divCatalogContainer = createDiv('catalog-container');
     const divCatalogNav = createDiv('catalog-nav');
-    const bagButton = createDiv('bag-button');
+    const bagButton = document.createElement('button');
+    bagButton.className = 'bag-button';
 
     divCatalogNav.append(bagButton);
 
@@ -22,7 +23,7 @@ function createCatalogElement(parent) {
     bagText.append(bagIcon);
 
     const booksCount = createDiv('books-count');
-    booksCount.innerText = '12';
+
     bagButton.append(bagText, booksCount);
 
     const divCatalogContent = createDiv('catalog-content');

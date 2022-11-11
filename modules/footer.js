@@ -9,10 +9,10 @@ const createFooterElements = () => {
     navDescription.className = 'nav-description';
 
     const navDescriptionText = document.createElement('p');
-    navDescriptionText.innerText = 'SCROLL TO NAVIGATE';
+    navDescriptionText.innerText = 'Click to Add to bag button';
 
     const navDescriptionText2 = document.createElement('p');
-    navDescriptionText2.innerText = 'DRAG and drop to add book to bag';
+    navDescriptionText2.innerText = 'or drag and drop to add book to bag';
     navDescription.append(navDescriptionText, navDescriptionText2);
 
     // // Create Navigation Arrows:

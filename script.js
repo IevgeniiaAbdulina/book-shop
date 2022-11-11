@@ -1,5 +1,4 @@
 import { createHeaderElement } from './modules/header.js';
-// import './data/books.json';
 import { createBookCard } from './modules/book-card.js';
 import { createCatalogElement } from './modules/catalog.js';
 import { createFooterElements } from './modules/footer.js';

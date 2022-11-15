@@ -11,6 +11,7 @@
     ==== File Structure  ====
         * Fonts
         * Variables
+        * Popup
         * Body
         * Header
         * Catalog
@@ -21,6 +22,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @import url(./styles/variables.css);
+@import url(./styles/popup.css);
 @import url(./styles/body.css);
 @import url(./styles/header-style.css);
 @import url(./styles/catalog-style.css);

@@ -1,30 +1,43 @@
+import { fetchAndCacheBooks, findBook } from './modules/bookProvider.js';
 import { createHeaderElement } from './modules/header.js';
 import { createBookCard } from './modules/book-card.js';
 import { createCatalogElement } from './modules/catalog.js';
 import { createFooterElements } from './modules/footer.js';
 import { bookPopup } from './modules/bookPopup.js';
 
+// Object with bought books:
 var shoppingBag = {
     booksInBag: [],
 }
 
+// DRAG-AND-DROP EVENTS:
 function allowDrop(event) {
-    console.log("on allowDrop event: ", event);
-    // event.stopPropagation();
     event.preventDefault();
 }
 
-function drag(event) {
-    console.log("on drag event: ", event.target.id);
+function dragEnter(event) {
+    let targetElement = document.querySelector('.bag-button');
+    targetElement.classList.add('over');
+}
+
+function drag(event, item) {
     event.target.style.opacity = '0.4';
-    event.dataTransfer.setData('text', event.target.id);
+    event.dataTransfer.setData('Item', item.id);
+}
+
+function dragend(event) {
+    event.target.style.opacity = '1';
+
+    let targetElement = document.querySelector('.bag-button');
+    targetElement.classList.remove('over');
 }
 
 function drop(event) {
     event.preventDefault();
-    let data = event.dataTransfer.getData('text');
-    console.log("on drop event: ", event, data);
+    let bookId = event.dataTransfer.getData('Item');
+    buyBook(bookId);
 }
+// ----------------------------------------------------------
 
 // Create elements when the whole page has loaded:
 window.onload = () => {
@@ -35,31 +48,41 @@ window.onload = () => {
     divMain.before(createHeaderElement());
     divMain.after(createFooterElements());
 
-    let booksCatalog = createCatalogElement(divMain, shoppingBag, allowDrop, drop);
+    let booksCatalog = createCatalogElement(divMain);
 
     fetchBooks(booksCatalog);
 }
 
+// Get books from Cache:
 const fetchBooks = (parentDiv) => {
-    fetch('./data/books.json')
-        .then(response => {
-            return response.json();
+    fetchAndCacheBooks((books) => {
+        const bookDivs = books.map(book => {
+            return createBookCard(book, buyBook, showMore);
+        });
+        parentDiv.append(...bookDivs);
+
+        // DRAG-AND-DROP EVENT LISTENERS:
+        books.map(item => {
+            let selectedItem = document.getElementById(item.id);
+            selectedItem.addEventListener('dragstart', (event) => drag(event, item));
+            selectedItem.addEventListener('dragend', dragend);
         })
-        .then(books => {
-            const bookDivs = books.map(book => {
-                return createBookCard(book, buyBook, showMore, drag);
-            });
-            parentDiv.append(...bookDivs);
-        })
-        .then (() => {
-            let imgs = document.querySelectorAll('.book-img');
-            imgs.forEach(function (img) {
-                img.addEventListener('dragstart', drag);
-            });
-        })
+
+        let targetElement = document.getElementById('droptarget');
+            targetElement.addEventListener('dragover', allowDrop);
+            targetElement.addEventListener('dragenter', dragEnter);
+            targetElement.addEventListener('dragend', dragend);
+            targetElement.addEventListener('drop', drop);
+    });
 }
 
-const buyBook = (book) => {
+const buyBook = (bookId) => {
+    let book = findBook(bookId);
+    if(!book) {
+        alert('this item can\'t be found:', bookId);
+        return;
+    };
+
     shoppingBag.booksInBag.push(book);
 
     let shoppingList = shoppingBag.booksInBag.length;
@@ -68,6 +91,7 @@ const buyBook = (book) => {
     booksCountNum.innerText = `${shoppingList}`;
 }
 
+// POP-UP MODAL WINDOW
 const hideModalWindowOnBlur = (event) => {
     if(event.target === event.currentTarget) {
         hideModalWindow();

@@ -1,18 +1,16 @@
 // Book Card Element
-// // Event called on Buy Button Click event and callback parametr is a book element
+// // Event called on Buy Button Click event and buyBook parametr is a book element
 
-const createBookCard = (book, callback, showMore, drag) => {
+const createBookCard = (book, buyBook, showMore) => {
     let divBookCard = document.createElement('div');
     divBookCard.className = 'book-card';
 
     let divBookImage = document.createElement('img');
     divBookImage.className = 'book-img';
-    let idCard = Math.floor(Math.random()*100+1);
-    divBookImage.id = idCard;
+    divBookImage.id = book.id;
     divBookImage.setAttribute('src', book.imageLink);
     divBookImage.setAttribute('alt', 'book image');
     divBookImage.setAttribute('draggable', 'true');
-    divBookImage.setAttribute('ondragstart', drag);
 
     let divTitle = document.createElement('div');
     divTitle.className = 'book-title';
@@ -25,7 +23,7 @@ const createBookCard = (book, callback, showMore, drag) => {
     let divBuyButton = document.createElement('button');
     divBuyButton.className = 'buy-button';
     divBuyButton.innerHTML = `<p>Add to bag <span>$ ${book.price}</span></p>`;
-    divBuyButton.addEventListener('click', event => callback(book));
+    divBuyButton.addEventListener('click', () => buyBook(book.id));
 
     let showMoreButton = document.createElement('button');
     showMoreButton.className = 'info-button';
@@ -37,8 +35,6 @@ const createBookCard = (book, callback, showMore, drag) => {
     divTextContainer.append(divAuthor, divTitle, showMoreButton, divBuyButton);
 
     divBookCard.append(divBookImage, divTextContainer);
-
-    divBookImage.addEventListener('ondragstart', drag);
 
     return divBookCard;
 }

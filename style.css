@@ -14,8 +14,10 @@
         * Popup
         * Body
         * Header
+        * Main
         * Catalog
         * Book card
+        * Order books
         * Footer
 -------------------------------------------------*/
 
@@ -25,6 +27,8 @@
 @import url(./styles/popup.css);
 @import url(./styles/body.css);
 @import url(./styles/header-style.css);
+@import url(./styles/main.css);
 @import url(./styles/catalog-style.css);
 @import url(./styles/book-card-style.css);
+@import url(./styles/order.css);
 @import url(./styles/footer.css);

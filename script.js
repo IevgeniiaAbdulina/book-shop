@@ -1,8 +1,8 @@
 import { fetchAndCacheBooks, findBook } from './modules/bookProvider.js';
 import { createHeaderElement } from './modules/header.js';
-import { createBookCard } from './modules/book-card.js';
-import { createCatalogElement } from './modules/catalog.js';
+import { createMainElement } from './modules/main.js';
 import { createFooterElements } from './modules/footer.js';
+import { createBookCard } from './modules/book-card.js';
 import { bookPopup } from './modules/bookPopup.js';
 
 // Object with bought books:
@@ -41,25 +41,27 @@ function drop(event) {
 
 // Create elements when the whole page has loaded:
 window.onload = () => {
-    let container = document.querySelector('#page');
-    const divMain = document.createElement('main');
+    const fragment = new DocumentFragment();
+    fragment.append(
+        createHeaderElement(),
+        createMainElement(),
+        createFooterElements()
+    );
+    document.body.prepend(fragment);
 
-    container.before(divMain);
-    divMain.before(createHeaderElement());
-    divMain.after(createFooterElements());
-
-    let booksCatalog = createCatalogElement(divMain);
-
-    fetchBooks(booksCatalog);
+    const catalogContainer = document.getElementById('catalog');
+    fetchBooks(catalogContainer);
 }
+// ----------------------------------------------------------
 
 // Get books from Cache:
 const fetchBooks = (parentDiv) => {
     fetchAndCacheBooks((books) => {
-        const bookDivs = books.map(book => {
-            return createBookCard(book, buyBook, showMore);
+        const fragment = new DocumentFragment();
+        books.map(book => {
+            return fragment.append(createBookCard(book, buyBook, showMore));
         });
-        parentDiv.append(...bookDivs);
+        parentDiv.append(fragment);
 
         // DRAG-AND-DROP EVENT LISTENERS:
         books.map(item => {

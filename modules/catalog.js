@@ -1,44 +1,18 @@
-//  Create Catalog Element:
-function createCatalogElement(parent) {
-    const createDiv = (className) => {
-        let elem = document.createElement('div');
-        if (!className) return elem;
-        elem.className = className;
-        return elem;
-    };
+function createCatalogElement() {
+    const catalogWrapper = document.createElement('div');
+    catalogWrapper.className = 'catalog-wrapper';
 
-    const divCatalogContainer = createDiv('catalog-container');
-    const divCatalogNav = createDiv('catalog-nav');
+    const catalogHeader = document.createElement('h2');
+    catalogHeader.className = 'catalog-header';
+    catalogHeader.innerText = 'Book catalog';
 
-    const bagContainer = createDiv('bag-container');
-    bagContainer.id = "droptarget";
+    const catalogContent = document.createElement('div');
+    catalogContent.className = 'catalog-content';
+    catalogContent.id = 'catalog';
 
-    const bagButton = document.createElement('button');
-    bagButton.className = 'bag-button';
+    catalogWrapper.append(catalogHeader, catalogContent)
 
-    bagContainer.appendChild(bagButton);
-    divCatalogNav.appendChild(bagContainer);
-
-    const bagText = createDiv('bag-text');
-    bagText.innerHTML = '<p>My Books</p>';
-
-    const bagIcon = document.createElement('img');
-    bagIcon.setAttribute('src', '/assets/icons/basket-24.png');
-    bagIcon.setAttribute('alt', 'bag icon');
-    bagText.append(bagIcon);
-
-    const booksCount = createDiv('books-count');
-    booksCount.innerText = '0';
-
-    bagButton.append(bagText, booksCount);
-
-    const divCatalogContent = createDiv('catalog-content');
-    divCatalogContent.id = 'catalog';
-
-    divCatalogContainer.append(divCatalogNav, divCatalogContent);
-    parent.append(divCatalogContainer);
-
-    return divCatalogContent;
+    return catalogWrapper;
 }
 
-export { createCatalogElement };
+export {createCatalogElement};

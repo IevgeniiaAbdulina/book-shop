@@ -1,4 +1,4 @@
-function orderBooks() {
+function orderBooks(confirmOrder) {
     const createElem = (tagName, className, id) => {
         let elem = document.createElement(tagName);
         if(className) elem.className = className;
@@ -12,34 +12,32 @@ function orderBooks() {
 
     const orderWrapper = createElem('div', 'order-wrapper');
     const orderContainer = createElem('div', 'order-container', 'droptarget');
-    const bagButton = createElem('button', 'bag-button');
 
-    const bagText = createElem('div', 'bag-text');
-    bagText.innerHTML = '<p>My Books</p>';
+    // Confirm order Button:
+    const confirmForm = createElem('form', 'confirm-form', 'confirm');
+    confirmForm.action = './order.html';
+    confirmForm.target = '_blank';
 
-    const bagIcon = createElem('img');
-    bagIcon.src = '/assets/icons/basket-24.png';
-    bagIcon.alt = 'bag icon';
-
-    const sum = createElem('div', 'total-sum', 'total');
+    const sum = createElem('label', 'total-sum', 'total');
     sum.innerText = 'Total: $ 0';
 
-    bagText.append(bagIcon);
-    bagButton.append(bagText);
+    const inputSubmit = createElem('input', 'confirm-order-button');
+    inputSubmit.type = 'submit';
+    inputSubmit.value = 'Confirm order';
+    inputSubmit.addEventListener('click', (e) => {
+        confirmOrder();
+    })
 
+    confirmForm.append(sum, inputSubmit);
     fragment
         .appendChild(orderWrapper)
         .append(
             orderHeader,
             orderContainer,
-            sum,
-            bagButton
+            confirmForm
         );
 
     return fragment;
 }
 
 export { orderBooks };
-
-// todo:
-// * When user click on Confirm order he appears in the Order page ( with form )

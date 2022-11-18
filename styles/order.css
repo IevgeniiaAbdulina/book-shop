@@ -32,6 +32,11 @@
     margin-top: auto;
 }
 
+.confirm-form {
+    display: flex;
+    flex-direction: column;
+}
+
 .total-sum {
     font-size: 1.5rem;
     font-weight: 700;
@@ -39,60 +44,30 @@
     margin-bottom: 20px;
 }
 
-.bag-button {
-    max-width: 220px;
-    min-width: 200px;
+input[type=submit] {
+    width: 45%;
+    min-width: 180px;
     min-height: 42px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #FFFFFF;
-    border-radius: 8px;
-    border: 1px solid var(--green);
-    cursor: pointer;
-}
+    align-self: flex-end;
 
-button.over {
-    background: #f0f0f0;
-    border: 1px solid var(--sunset);
-}
-
-.bag-button:hover {
-    background: #f0f0f0;
-}
-
-.bag-text{
-    display: flex;
-    align-items: center;
-}
-
-.bag-text p {
-    order: 2;
     font-weight: 700;
     font-size: 16px;
     line-height: 22px;
     text-transform: uppercase;
-    padding: 3px 0 0;
-    color: #000000;
-}
+    color: var(--white);
 
-.bag-text img {
-    order: 1;
-    margin-right: 10px;
-    filter: invert(48%) sepia(26%) saturate(220%) hue-rotate(106deg) brightness(97%) contrast(91%);
-}
-
-.books-count {
-    min-width: 31px;
-    min-height: 31px;
-    padding: 2px 5px;
+    padding: 10px;
     background: var(--green);
-    border-radius: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    color: white;
+input[type=submit].blocked {
+    background: grey;
+    color: darkslategray;
+}
+
+input[type=submit]:hover {
+    filter: brightness(90%);
 }

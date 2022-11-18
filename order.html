@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Project Challenge by RS School. JS Frontend development course.">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Ievgeniia Abdulina">
+    <title>Book Shop | Order</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1 id="title">&bull; Order page &bull;</h1>
+            <p class="order-description">Complete your shopping, leave us an information for delivery and to contact you.</p>
+        </header>
+        <form action="$" method="post" id="order_form">
+            <div class="personal-info">
+                <h3 class="section-title">Personal information</h3>
+                <div class="container">
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Surname</label>
+                        <input type="text" name="surname" id="surname" required>
+                    </div>
+                </div>
+            </div>
+            <div class="delivery-date">
+                <h3 class="section-title">Delivery date</h3>
+                <div class="container">
+                    <div class="form-group">
+                        <label for="">Delivery date(not earlier than next day)</label>
+                        <input type="date" name="" value="" id="">
+                    </div>
+                </div>
+            </div>
+            <div class="address-info">
+                <h3 class="section-title">Delivery address</h3>
+                <div class="container">
+                    <div class="form-group">
+                        <label for="">Street</label>
+                        <input type="text" name="" value="" id="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">House number</label>
+                        <input type="number" name="" value="" id="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Flat number</label>
+                        <input type="number" name="" value="" id="" required>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-type">
+                <h3 class="section-title">Payment type</h3>
+                <div class="container">
+                    <div class="form-group">
+                        <input type="radio" name="payment" value="cash-payment" id="cash">
+                        <label for="cash">Cash</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="radio" name="payment" value="card-payment" id="card" checked>
+                        <label for="card">Card</label>
+                    </div>
+                </div>
+            </div>
+            <div class="gifts">
+                <h3 class="section-title">Choose 2 gifts</h3>
+                <p>(optional)</p>
+                <div class="container">
+                    <div class="form-group">
+                        <input type="checkbox" name="gift" value="pack-as-gift" id="pack">
+                        <label for="">Pack as a gift</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="gift" value="add-postcard" id="postcard">
+                        <label for="">Add postcard</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="gift" value="add-discaount" id="discount">
+                        <label for="">Provide 2% discount to the nect time</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="gift" value="branded-item" id="branded">
+                        <label for="">Branded pen or pencil</label>
+                    </div>
+                </div>
+            </div>
+            <div class="order-complete">
+                <input id="submit" type="submit" value="Complete"></input>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

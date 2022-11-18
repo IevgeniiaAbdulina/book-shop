@@ -46,7 +46,7 @@ window.onload = () => {
     const fragment = new DocumentFragment();
     fragment.append(
         createHeaderElement(),
-        createMainElement(),
+        createMainElement(confirmOrder),
         createFooterElements()
     );
     document.body.prepend(fragment);
@@ -118,8 +118,13 @@ const totalSum = () => {
 
     let sum = document.getElementById('total');
     sum.innerText = `Total: $ ${totalSum}`;
-    console.log(totalSum)
-    orderBooks(totalSum);
+}
+
+// Confirm an order:
+// * When user click on Confirm order he appears in the Order page ( with form )
+const confirmOrder = () => {
+    console.log(' CoNFIRM ORDER');
+    
 }
 
 // POP-UP MODAL WINDOW

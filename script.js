@@ -89,12 +89,16 @@ const buyBook = (bookId) => {
     shoppingBag.booksInBag.push(book);
 
     // Here the book appears in the bag with shorten data:
-    createOrderList(shoppingBag.booksInBag);
+    createOrderList(shoppingBag.booksInBag, removeItem);
+}
 
-    let shoppingListCount = shoppingBag.booksInBag.length;
-    const booksCountNum = document.querySelector('.books-count');
-    // create shopping bag count text:
-    booksCountNum.innerText = `${shoppingListCount}`;
+// remove book from the bag by the appropriate button:
+const removeItem = (id, bookCard) => {
+    let parent = document.getElementById('droptarget');
+
+    let filteredList = shoppingBag.booksInBag.filter(el => el.id !== id);
+    shoppingBag.booksInBag = filteredList;
+    parent.removeChild(bookCard);
 }
 
 // POP-UP MODAL WINDOW

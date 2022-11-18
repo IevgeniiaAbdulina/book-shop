@@ -1,6 +1,6 @@
 import { findBook } from './bookProvider.js';
 
-function createOrderList(orderList) {
+function createOrderList(orderList, removeItem) {
     let fragment = document.createDocumentFragment();
     let parent = document.getElementById('droptarget');
     let count = 0;
@@ -60,6 +60,9 @@ function createOrderList(orderList) {
             removeButton.className = 'remove-button';
             removeButton.id = 'remove';
             removeButton.innerHTML = '<span class="material-symbols-outlined">close</span>';
+            removeButton.addEventListener('click', event => {
+                removeItem(book.id, bookCard);
+            });
 
             textContainer.append(
                 author,

@@ -25,7 +25,7 @@ function orderBooks() {
     booksCount.innerText = '0';
 
     bagText.append(bagIcon);
-    bagButton.append(bagText, booksCount)
+    bagButton.append(bagText, booksCount);
 
     fragment
         .appendChild(orderWrapper)
@@ -39,3 +39,7 @@ function orderBooks() {
 }
 
 export { orderBooks };
+
+// todo:
+// *  the total sum is updated
+// * When user click on Confirm order he appears in the Order page ( with form )

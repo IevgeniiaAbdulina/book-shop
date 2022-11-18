@@ -4,6 +4,7 @@ import { createMainElement } from './modules/main.js';
 import { createFooterElements } from './modules/footer.js';
 import { createBookCard } from './modules/book-card.js';
 import { bookPopup } from './modules/bookPopup.js';
+import { createOrderList } from './modules/orderList.js';
 
 // Object with bought books:
 var shoppingBag = {
@@ -87,10 +88,13 @@ const buyBook = (bookId) => {
 
     shoppingBag.booksInBag.push(book);
 
-    let shoppingList = shoppingBag.booksInBag.length;
+    // Here the book appears in the bag with shorten data:
+    createOrderList(shoppingBag.booksInBag);
+
+    let shoppingListCount = shoppingBag.booksInBag.length;
     const booksCountNum = document.querySelector('.books-count');
     // create shopping bag count text:
-    booksCountNum.innerText = `${shoppingList}`;
+    booksCountNum.innerText = `${shoppingListCount}`;
 }
 
 // POP-UP MODAL WINDOW

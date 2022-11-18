@@ -1,0 +1,45 @@
+/* ORDERED BOOK CARD */
+.ordered-book-card {
+    padding: 15px 0;
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--green);
+}
+
+.ordered-book-img {
+    width: 8rem;
+    height: auto;
+    border: 1px solid var(--green);
+}
+
+.ordered-book-text-container {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    padding: 0 15px;
+}
+
+.ordered-book-title {
+    margin: 15px 0;
+}
+
+.ordered-book-price {
+    font-size: 16px;
+    line-height: 18px;
+    white-space: normal;
+}
+
+.remove-button > span{
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--green);
+    cursor: pointer;
+}
+
+.remove-button > span:hover {
+    color: var(--sunset);
+    transform: rotateZ(180deg);
+    transition: 0.4s ease-in-out ;
+}

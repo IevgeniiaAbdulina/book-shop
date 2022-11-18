@@ -21,17 +21,18 @@ function orderBooks() {
     bagIcon.src = '/assets/icons/basket-24.png';
     bagIcon.alt = 'bag icon';
 
-    const booksCount = createElem('div', 'books-count');
-    booksCount.innerText = '0';
+    const sum = createElem('div', 'total-sum', 'total');
+    sum.innerText = 'Total: $ 0';
 
     bagText.append(bagIcon);
-    bagButton.append(bagText, booksCount);
+    bagButton.append(bagText);
 
     fragment
         .appendChild(orderWrapper)
         .append(
             orderHeader,
             orderContainer,
+            sum,
             bagButton
         );
 
@@ -41,5 +42,4 @@ function orderBooks() {
 export { orderBooks };
 
 // todo:
-// *  the total sum is updated
 // * When user click on Confirm order he appears in the Order page ( with form )

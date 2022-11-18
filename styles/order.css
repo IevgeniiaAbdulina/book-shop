@@ -32,6 +32,13 @@
     margin-top: auto;
 }
 
+.total-sum {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue-red);
+    margin-bottom: 20px;
+}
+
 .bag-button {
     max-width: 220px;
     min-width: 200px;

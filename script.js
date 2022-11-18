@@ -5,6 +5,7 @@ import { createFooterElements } from './modules/footer.js';
 import { createBookCard } from './modules/book-card.js';
 import { bookPopup } from './modules/bookPopup.js';
 import { createOrderList } from './modules/orderList.js';
+import { orderBooks } from './modules/order-books.js';
 
 // Object with bought books:
 var shoppingBag = {
@@ -90,6 +91,9 @@ const buyBook = (bookId) => {
 
     // Here the book appears in the bag with shorten data:
     createOrderList(shoppingBag.booksInBag, removeItem);
+
+    // total sum is updated:
+    totalSum();
 }
 
 // remove book from the bag by the appropriate button:
@@ -98,7 +102,24 @@ const removeItem = (id, bookCard) => {
 
     let filteredList = shoppingBag.booksInBag.filter(el => el.id !== id);
     shoppingBag.booksInBag = filteredList;
+
+    // total sum is updated:
+    totalSum();
     parent.removeChild(bookCard);
+}
+
+const totalSum = () => {
+    let shoppingList = shoppingBag.booksInBag;
+    let totalSum = 0;
+
+    for (let item of shoppingList) {
+        totalSum += item.price;
+    }
+
+    let sum = document.getElementById('total');
+    sum.innerText = `Total: $ ${totalSum}`;
+    console.log(totalSum)
+    orderBooks(totalSum);
 }
 
 // POP-UP MODAL WINDOW

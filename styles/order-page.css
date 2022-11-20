@@ -80,8 +80,7 @@ header > p {
 }
 
 input[type=text],
-[type=email],
-[type=number] {
+input[type=number] {
     background: none;
     border: none;
     border-bottom: 2px solid #6A8279;
@@ -98,7 +97,6 @@ input[type=text],
 
 label[for=name],
 [for=surname],
-[for=email],
 [for=street],
 [for=house],
 [for=flat] {
@@ -106,8 +104,7 @@ label[for=name],
 }
 
 input[type=text]:focus,
-[type=email]:focus,
-[type=number]:focus {
+input[type=number]:focus {
     outline: none;
     padding: 0.875em 0;
     border-bottom: 2px solid #CC4541;
@@ -264,6 +261,19 @@ label.checkbox:hover::before {
     color: #F2F3EB;
 }
 
+#submit[disabled] {
+    background: #ccc;
+    border: 2px solid #5A5A5A;
+    color: #5A5A5A;
+}
+
+#submit[disabled]:hover {
+    background: #ccc;
+    border: 2px solid #5A5A5A;
+    color: #5A5A5A;
+    cursor: inherit;
+}
+
 .address-info > .container {
     display: flex;
     flex-direction: column;
@@ -275,8 +285,19 @@ label.checkbox:hover::before {
     gap: 20px;
 }
 
-input.error {
+/* ERROR STYLE */
+.error {
+    position: relative;
+    padding: 0;
+    width: 100%;
+    font-size: 14px;
+    color: red;
+    box-sizing: border-box;
     border-color: red;
+}
+
+.error.active {
+    bottom: 20px;
 }
 
 @media screen and (max-width: 768px) {

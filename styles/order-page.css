@@ -90,7 +90,7 @@ input[type=text],
     font-weight: 400;
     letter-spacing: 1px;
     margin: 0 0 1.875em 0;
-    padding: 0 0 0.875em 0;
+    padding: 0.875em 0;
     width: 100%;
     box-sizing: border-box;
     transition: all 0.3s;
@@ -109,7 +109,7 @@ input[type=text]:focus,
 [type=email]:focus,
 [type=number]:focus {
     outline: none;
-    padding: 0 0 0.875em 0;
+    padding: 0.875em 0;
     border-bottom: 2px solid #CC4541;
 }
 
@@ -273,6 +273,10 @@ label.checkbox:hover::before {
     width: 100%;
     display: flex;
     gap: 20px;
+}
+
+input.error {
+    border-color: red;
 }
 
 @media screen and (max-width: 768px) {

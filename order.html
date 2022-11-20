@@ -23,11 +23,11 @@
                     <div class="container">
                         <div class="form-group">
                             <label for="name">Name<span>*</span></label>
-                            <input type="text" name="name" id="name" required>
+                            <input type="text" name="name" id="name" pattern="/^[a-zA-Z]{4,}$/g" required>
                         </div>
                         <div class="form-group">
                             <label for="surname">Surname<span>*</span></label>
-                            <input type="text" name="surname" id="surname" required>
+                            <input type="text" name="surname" id="surname" pattern="/^[a-zA-Z]{5,}$/g" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email<span>*</span></label>
@@ -39,8 +39,8 @@
                     <h3 class="section-title">Delivery date</h3>
                     <div class="container">
                         <div class="form-group">
-                            <label class="date-input" for="">Delivery date<span>*</span> <i>(not earlier than next day)</i></label>
-                            <input type="date" name="date" value="" id="date" min="2022-11-18" max="2022-11-25" required>
+                            <label class="date-input" for="">Delivery date<span>*</span></label>
+                            <input type="date" name="date" value="" id="date" required>
                         </div>
                     </div>
                 </div>
@@ -49,22 +49,22 @@
                     <div class="container">
                         <div class="form-group">
                             <label for="street">Street<span>*</span></label>
-                            <input type="text" name="street" value="" id="street" required>
+                            <input type="text" name="street" value="" id="street" pattern="/^[a-zA-Z0-9]{5,}$/g" required>
                         </div>
                         <div class="wrap">
                             <div class="form-group">
                                 <label for="house">House number<span>*</span></label>
-                                <input type="number" name="house" value="house" id="house" required>
+                                <input type="number" name="house" value="house" id="house" pattern="/^[0-9]*$/g" required>
                             </div>
                             <div class="form-group">
                                 <label for="flat">Flat number<span>*</span></label>
-                                <input type="number" name="flat" value="flat" id="flat" required>
+                                <input type="number" name="flat" value="flat" id="flat" pattern="/^[^\-][0-9\-]+$/g" required>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="payment-type block">
-                    <h3 class="section-title">Payment type</h3>
+                    <h3 class="section-title">Payment type<span>*</span></h3>
                     <div class="container">
                         <div class="form-group">
                             <input type="radio" name="payment" value="cash-payment" id="cash">
@@ -104,5 +104,6 @@
             </form>
         </div>
     </main>
+    <script src="./modules/order-form.js"></script>
 </body>
 </html>

@@ -104,3 +104,35 @@ function showError(inputToVerify, inputError) {
     // Set the styling appropriately:
     inputError.className = 'error active';
 }
+
+// 9. After user click on Complete button, he will see the summarized information:
+let infoMessage = document.getElementById('customer-info');
+let info = document.createElement('p');
+infoMessage.appendChild(info);
+
+function getData(form) {
+    let formData = new FormData(form);
+
+    for (let pair of formData.entries()) {
+        // console.log(pair[0]+': '+pair[1]);
+    }
+    let customerInfo = Object.fromEntries(formData);
+
+    let street = customerInfo.street;
+    let house = customerInfo.house;
+    let flat = customerInfo.flat;
+    let customerName = customerInfo.name;
+    let customerSurname = customerInfo.surname;
+
+    info.innerText = `The delivery address is ${street} street house ${house} flat ${flat}. Customer ${customerName} ${customerSurname}.`;
+
+    // Display Info on the page:
+    document.getElementById('header').style.display = 'none';
+    document.getElementById('order_form').style.display = 'none';
+    document.getElementById('customer-info').style.display = 'flex';
+}
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    getData(event.target);
+})

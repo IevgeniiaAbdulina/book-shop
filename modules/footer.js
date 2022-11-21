@@ -15,28 +15,11 @@ const createFooterElements = () => {
     navDescriptionText2.innerText = 'or drag and drop to add book to bag';
     navDescription.append(navDescriptionText, navDescriptionText2);
 
-    // // Create Navigation Arrows:
-    // const divArrows = document.createElement('div');
-    // divArrows.className = 'arrows';
-
-    // const arrowLeft = document.createElement('img');
-    // arrowLeft.className = 'arrow left';
-    // arrowLeft.setAttribute('src', '/assets/icons/arrow-left.svg');
-    // arrowLeft.setAttribute('alt', 'arrow icon');
-
-    // const arrowRight = document.createElement('img');
-    // arrowRight.className = 'arrow right';
-    // arrowRight.setAttribute('src', '/assets/icons/arrow-right.svg');
-    // arrowRight.setAttribute('alt', 'arrow icon');
-
-    // divArrows.append(arrowLeft, arrowRight);
-
     const divAttribution = document.createElement('div');
     divAttribution.className = 'attribution';
     divAttribution.innerHTML = '<p>Coded by Abdulina</p>';
 
     tagFooter.append(footerContainer);
-    // footerContainer.append(navDescription, divArrows, divAttribution);
     footerContainer.append(navDescription, divAttribution);
 
     return tagFooter;

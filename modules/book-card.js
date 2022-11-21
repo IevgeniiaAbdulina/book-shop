@@ -14,7 +14,7 @@ const createBookCard = (book, buyBook, showMore) => {
 
     let divTitle = document.createElement('div');
     divTitle.className = 'book-title';
-    divTitle.innerHTML = `<h2>${book.title}</h2>`;
+    divTitle.innerHTML = `<h3>${book.title}</h3>`;
 
     let divAuthor = document.createElement('div');
     divAuthor.className = 'book-author';

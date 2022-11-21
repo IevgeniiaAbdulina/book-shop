@@ -286,6 +286,14 @@ label.checkbox:hover::before {
     gap: 20px;
 }
 
+.address-info > .container > .wrap div:nth-child(1) {
+    width: 50%;
+}
+
+.address-info > .container > .wrap div:nth-child(2) {
+    width: 50%;
+}
+
 /* ERROR STYLE */
 input.error {
     border-bottom: 2px solid #CC4541;

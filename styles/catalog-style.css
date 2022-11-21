@@ -7,15 +7,6 @@
     flex: 1;
 }
 
-.catalog-header {
-    width: 100%;
-    text-transform: capitalize;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--green);
-    color: var(--green);
-}
-
 .catalog-content {
     display: flex;
     flex-wrap: wrap;

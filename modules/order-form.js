@@ -18,24 +18,9 @@ inputs.forEach(input => {
     // Validate on Blur:
     input.addEventListener('blur', function() {
         input.checkValidity();
-        //updateSubmitButtonState();
         const inputError = document.querySelector(`#${input.id} + span.error`);
         showError(input, inputError);
     });
-});
-
-// Form submiting:
-const form = document.querySelector('form');
-// 7. The Complete button is disabled until the user full form with valid information:
-const completeButton = document.getElementById('submit');
-completeButton.disabled = true;
-
-form.addEventListener('submit', (event) => {
-    // if the inputs are invalid:
-    if (completeButton.disabled) {
-        showError();
-        event.preventDefault();
-    }
 });
 
 // - Delivery date(mandatory, not earlier than next day)
@@ -67,7 +52,6 @@ function updateSubmitButtonState() {
     .from(inputs)
     .map(input => input.validity)
     .every(validity => validity.valid === true && validity.valueMissing === false);
-    //console.log('are all ok: ', areAllOk);
 
     completeButton.disabled = areAllOk == false;
 }
@@ -123,10 +107,9 @@ infoMessage.appendChild(info);
 
 function getData(form) {
     let formData = new FormData(form);
-
     for (let pair of formData.entries()) {
-        // console.log(pair[0]+': '+pair[1]);
     }
+
     let customerInfo = Object.fromEntries(formData);
 
     let street = customerInfo.street;
@@ -143,11 +126,6 @@ function getData(form) {
     document.getElementById('customer-info').style.display = 'flex';
 }
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    getData(event.target);
-});
-
 // Limit selected checkboxes to 2:
 let checkboxes = document.querySelectorAll('.check');
 let maxChecked = 2;
@@ -161,3 +139,15 @@ function selectiveCheck(event) {
         return false;
     }
 }
+
+// Form submiting:
+const form = document.querySelector('form');
+// 7. The Complete button is disabled until the user full form with valid information:
+const completeButton = document.getElementById('submit');
+completeButton.disabled = true;
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    getData(event.target);
+
+});

@@ -26,10 +26,12 @@ body {
 }
 
 header {
+    display: block;
     padding: 40px;
 }
 
 form {
+    display: block;
     padding: 0 40px;
     margin: 50px 0;
 }
@@ -286,14 +288,17 @@ label.checkbox:hover::before {
 }
 
 /* ERROR STYLE */
+input.error {
+    border-bottom:2px solid #CC4541;
+}
 .error {
     position: relative;
     padding: 0;
     width: 100%;
     font-size: 14px;
-    color: red;
+    color: #CC4541;
     box-sizing: border-box;
-    border-color: red;
+    border-color: #CC4541;
 }
 
 .error.active {

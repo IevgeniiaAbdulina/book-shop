@@ -1,8 +1,8 @@
 // Order Form Page
-// // 6. The order form contains fields with own validation rules:
-// // // - Name (mandatory, the length not less than 4 symbols, strings only, without spaces)
-// // // - Surname (mandatory, the length not less than 5 symbols, strings only, without spaces)
-// // // - validation of form fields should run after user left the field (blur)
+// 6. The order form contains fields with own validation rules:
+// - Name (mandatory, the length not less than 4 symbols, strings only, without spaces)
+// - Surname (mandatory, the length not less than 5 symbols, strings only, without spaces)
+// - validation of form fields should run after user left the field (blur)
 
 const inputs = document.querySelectorAll('input');
 
@@ -11,16 +11,32 @@ inputs.forEach(input => {
         'invalid',
         event => {
             input.classList.add('error');
+            updateSubmitButtonState();
         },
         false
     );
     // Validate on Blur:
     input.addEventListener('blur', function() {
         input.checkValidity();
+        //updateSubmitButtonState();
     });
 });
 
-// // // - Delivery date(mandatory, not earlier than next day)
+// Form submiting:
+const form = document.querySelector('form');
+// 7. The Complete button is disabled until the user full form with valid information:
+const completeButton = document.getElementById('submit');
+completeButton.disabled = true;
+
+form.addEventListener('submit', (event) => {
+    // if the inputs are invalid:
+    if (completeButton.disabled) {
+        showError();
+        event.preventDefault();
+    }
+});
+
+// - Delivery date(mandatory, not earlier than next day)
 const date = document.getElementById('date');
 let day = new Date().getDate();
 
@@ -40,39 +56,28 @@ date.addEventListener('change', event => {
     updateSubmitButtonState();
 });
 
-// // 7. The Complete button is disabled until the user full form with valid information:
-const form = document.querySelector('form');
-const completeButton = document.getElementById('submit');
-completeButton.disabled = true;
-
+// The Complete button is enabled when the user full form with valid information:
 function updateSubmitButtonState() {
     const areAllOk = Array
     .from(inputs)
-    .map(input => input.validity.valid)
-    .every(valid => valid === true);
-    console.log('are all ok: ', areAllOk);
+    .map(input => input.validity)
+    .every(validity => validity.valid === true && validity.valueMissing === false);
+    //console.log('are all ok: ', areAllOk);
 
     completeButton.disabled = areAllOk == false;
-
-    // Form submiting:
-    form.addEventListener('submit', (event) => {
-        // if the inputs are invalid:
-        if (!areAllOk) {
-            showError();
-            event.preventDefault();
-        }
-    });
 }
 
+// validation of inputs fields:
 inputs.forEach(input => {
     const inputError = document.querySelector(`#${input.id} + span.error`);
     if (!input || !inputError) {
         return
     }
     input.addEventListener('input', (event) => {
-        console.log('date input')
+        input.checkValidity();
         if (input.validity.valid) {
             inputError.textContent = '';
+            input.classList.remove('error');
             updateSubmitButtonState();
         } else {
             showError(input, inputError);
@@ -80,6 +85,7 @@ inputs.forEach(input => {
     });
 });
 
+// the validation messages are appeared:
 function showError(inputToVerify, inputError) {
     if(!inputToVerify || inputToVerify === 'null') {
         return

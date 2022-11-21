@@ -19,6 +19,8 @@ inputs.forEach(input => {
     input.addEventListener('blur', function() {
         input.checkValidity();
         //updateSubmitButtonState();
+        const inputError = document.querySelector(`#${input.id} + span.error`);
+        showError(input, inputError);
     });
 });
 
@@ -54,6 +56,9 @@ document.getElementById('date').setAttribute('max', maxDateStr);
 
 date.addEventListener('change', event => {
     updateSubmitButtonState();
+    if(event.target.value) {
+        date.classList.remove('error');
+    }
 });
 
 // The Complete button is enabled when the user full form with valid information:
@@ -90,10 +95,16 @@ function showError(inputToVerify, inputError) {
     if(!inputToVerify || inputToVerify === 'null') {
         return
     }
+    // Optional checkboxes and radiobuttons no error
+    if(!inputError) {
+        return
+    }
     if(inputToVerify.validity.valueMissing) {
         // if field is empty:
         inputError.textContent = 'This field is required';
         // inputError.className = 'error';
+    } if(inputToVerify.validity.rangeUnderflow) {
+        inputError.textContent = inputToVerify.getAttribute('pattern-error-message');
     } else if(inputToVerify.validity.tooShort) {
         // If the data is too short:
         inputError.textContent = `Value should be at least ${inputToVerify.minLength} characters. You entered ${inputToVerify.value.length}`
@@ -135,4 +146,18 @@ function getData(form) {
 form.addEventListener('submit', function(event) {
     event.preventDefault();
     getData(event.target);
-})
+});
+
+// Limit selected checkboxes to 2:
+let checkboxes = document.querySelectorAll('.check');
+let maxChecked = 2;
+for (let i=0; i < checkboxes.length; i++) {
+    checkboxes[i].onclick = selectiveCheck;
+}
+
+function selectiveCheck(event) {
+    let checkedItems = document.querySelectorAll('.check:checked');
+    if(checkedItems.length >= maxChecked + 1) {
+        return false;
+    }
+}

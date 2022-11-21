@@ -1,0 +1,15 @@
+/*  CATALOG SECTION STYLE */
+
+.catalog-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.catalog-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 3.75rem;
+}

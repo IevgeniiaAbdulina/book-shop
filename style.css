@@ -1,0 +1,39 @@
+/*-------------------------------------------------
+    [Main Stylesheet]
+
+    Project:    Book Shop Web Project
+    Version:    1.0.0
+    Challenge:  RS School
+    Coded:      Ievgeniia Abdulina
+    Date:       10-11-2022
+-------------------------------------------------*/
+/*-------------------------------------------------
+    ==== File Structure  ====
+        * Fonts
+        * Variables
+        * Popup
+        * Body
+        * Header
+        * Main
+        * Catalog
+        * Book card
+        * Order books
+        * Ordered book card
+        * Footer
+
+        --- Order Page Style ---
+        * Order page
+-------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@import url(./styles/variables.css);
+@import url(./styles/popup.css);
+@import url(./styles/body.css);
+@import url(./styles/header-style.css);
+@import url(./styles/main.css);
+@import url(./styles/catalog-style.css);
+@import url(./styles/book-card-style.css);
+@import url(./styles/order.css);
+@import url(./styles/ordered-book-card.css);
+@import url(./styles/footer.css);

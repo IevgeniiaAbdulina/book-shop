@@ -1,0 +1,27 @@
+/* HEADER STYLE */
+.header-container {
+    width: 1200px;
+    height: auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin: 24px 0;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    letter-spacing: 7px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #474544;
+}
+
+.header-divider {
+    width: 100%;
+    height: 3px;
+    background: var(--green);
+}

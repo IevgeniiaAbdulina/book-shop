@@ -1,0 +1,26 @@
+/* FOOTER BLOCK STYLE */
+footer {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container {
+    width: 1200px;
+    height: auto;
+    padding: 0 15px;
+    margin: 10px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.nav-description {
+    width: 14rem;
+}

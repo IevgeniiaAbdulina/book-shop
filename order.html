@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Project Challenge by RS School. JS Frontend development course.">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Ievgeniia Abdulina">
+    <title>Book Shop | Order</title>
+    <link rel="stylesheet" type="text/css" href="/styles/order-page.css">
+</head>
+<body>
+    <main>
+        <div id="wrapper">
+            <div id="customer-info" class="info-message">
+                <div class="info-message-icon"></div>
+                <h3>&bull; The order created &bull;</h3>
+            </div>
+            <header id="header">
+                <h1 id="title">&bull; Order page &bull;</h1>
+                <p class="order-description">The last step to complete your purchase, leave us your shipping information and your contact</p>
+            </header>
+            <form action="#" method="post" id="order_form">
+                <div class="personal-info block">
+                    <h3 class="section-title">Personal information</h3>
+                    <div class="container">
+                        <div class="form-group">
+                            <label for="name">Name<span>*</span></label>
+                            <input type="text" name="name" id="name" minlength="4" pattern="^[a-zA-Z]{4,}$" pattern-error-message="Name should be a string only and without spaces" required>
+                            <span class="error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Surname<span>*</span></label>
+                            <input type="text" name="surname" id="surname" minlength="5" pattern="^[a-zA-Z]{5,}$" pattern-error-message="Surname should be a string only and without spaces" required>
+                            <span class="error"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery-date block">
+                    <h3 class="section-title">Delivery date</h3>
+                    <div class="container">
+                        <div class="form-group">
+                            <label class="date-input" for="">Delivery date<span>*</span></label>
+                            <input type="date" name="date" value="" id="date" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="address-info block">
+                    <h3 class="section-title">Billing address</h3>
+                    <div class="container">
+                        <div class="form-group">
+                            <label for="street">Street<span>*</span></label>
+                            <input type="text" name="street" value="" id="street" minlength="5"  pattern="^[a-zA-Z0-9]+$" pattern-error-message="Street should contain the letters and numbers" required>
+                            <span class="error"></span>
+                        </div>
+                        <div class="wrap">
+                            <div class="form-group">
+                                <label for="house">House number<span>*</span></label>
+                                <input type="number" name="house" id="house" min="0" pattern-error-message="Positive numbers only" required>
+                                <span class="error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="flat">Flat number<span>*</span></label>
+                                <input type="text" name="flat" id="flat" pattern="^[^\-][0-9\-]*$" pattern-error-message="Positive numbers only" required>
+                                <span class="error"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-type block">
+                    <h3 class="section-title">Payment type<span>*</span></h3>
+                    <div class="container">
+                        <div class="form-group">
+                            <input type="radio" name="payment" value="cash-payment" id="cash">
+                            <label class="radio" for="cash"><span>Cash</span></label>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" name="payment" value="card-payment" id="card" checked>
+                            <label class="radio" for="card"><span>Card</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="gifts block">
+                    <h3 class="section-title">Choose 2 gifts</h3>
+                    <p>(optional)</p>
+                    <div class="container">
+                        <div class="form-group">
+                            <input class="check" type="checkbox" name="gift" value="pack-as-gift" id="pack" checked>
+                            <label class="checkbox" for=""><span>Pack as a gift</span></label>
+                        </div>
+                        <div class="form-group">
+                            <input class="check" type="checkbox" name="gift" value="add-postcard" id="postcard" checked>
+                            <label class="checkbox" for=""><span>Add postcard</span></label>
+                        </div>
+                        <div class="form-group">
+                            <input class="check" type="checkbox" name="gift" value="add-discaount" id="discount">
+                            <label class="checkbox" for=""><span>Provide 2% discount to the next time</span></label>
+                        </div>
+                        <div class="form-group">
+                            <input class="check" type="checkbox" name="gift" value="branded-item" id="branded">
+                            <label class="checkbox" for=""><span>Branded pen or pencil</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-complete block">
+                    <input id="submit" type="submit" value="Complete"></input>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="./modules/order-form.js"></script>
+</body>
+</html>

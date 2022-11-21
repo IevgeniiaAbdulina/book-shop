@@ -123,8 +123,7 @@ const totalSum = () => {
 // Confirm an order:
 // * When user click on Confirm order he appears in the Order page ( with form )
 const confirmOrder = () => {
-    console.log(' CoNFIRM ORDER');
-    
+    console.log(' CONFIRM ORDER');
 }
 
 // POP-UP MODAL WINDOW

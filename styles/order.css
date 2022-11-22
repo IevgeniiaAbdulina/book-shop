@@ -36,6 +36,10 @@
     border: 2px dashed var(--green);
 }
 
+.hover {
+    border: 2px dashed var(--green);
+}
+
 .order-container:hover .empty-bag {
     font-weight: 700;
 }

@@ -1,10 +1,11 @@
+const createElem = (tagName, className, id) => {
+    let elem = document.createElement(tagName);
+    if(className) elem.className = className;
+    if(id) elem.id = id;
+    return elem;
+};
+
 function orderBooks(confirmOrder) {
-    const createElem = (tagName, className, id) => {
-        let elem = document.createElement(tagName);
-        if(className) elem.className = className;
-        if(id) elem.id = id;
-        return elem;
-    };
     let fragment = new DocumentFragment();
 
     const orderHeader = createElem('h2', 'order-header');
@@ -13,8 +14,7 @@ function orderBooks(confirmOrder) {
     const orderWrapper = createElem('div', 'order-wrapper');
     const orderContainer = createElem('div', 'order-container', 'droptarget');
 
-    let emptyBagMessage = createElem('p', 'empty-bag', 'empty-bag');
-    emptyBagMessage.innerText = 'Drag and drop here';
+    showEmptyMessage(orderContainer);
 
     // Confirm order Button:
     const confirmForm = createElem('form', 'confirm-form', 'confirm');
@@ -31,7 +31,6 @@ function orderBooks(confirmOrder) {
         confirmOrder();
     });
 
-    orderContainer.appendChild(emptyBagMessage);
     confirmForm.append(sum, inputSubmit);
     fragment
         .appendChild(orderWrapper)
@@ -44,4 +43,13 @@ function orderBooks(confirmOrder) {
     return fragment;
 }
 
-export { orderBooks };
+const showEmptyMessage = (parent) => {
+    let emptyBagMessage = createElem('p', 'empty-bag', 'empty-bag');
+    emptyBagMessage.innerText = 'Drag and drop here';
+    if(!parent) {
+        parent = document.getElementById('droptarget');
+    }
+    parent.appendChild(emptyBagMessage);
+}
+
+export { orderBooks, showEmptyMessage };

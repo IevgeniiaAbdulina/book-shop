@@ -16,6 +16,15 @@
             <div id="customer-info" class="info-message">
                 <div class="info-message-icon"></div>
                 <h3>&bull; The order created &bull;</h3>
+                <div class="info-wrap">
+                    <p>Customer name: <span id="customer-name"></span></p>
+                    <p>Delivary address: <span id="customer-address"></span></p>
+                    <p>Delivery date: <span id="delivery-date"></span></p>
+                </div>
+                <div class="info-buttons">
+                    <input id="change-btn" type="button" value="change" onclick = "window.location.href='./order.html';"/>
+                    <input id="confirm-btn" onclick= "window.location.href = './index.html';" type="button" value="confirm"/>
+                </div>
             </div>
             <header id="header">
                 <h1 id="title">&bull; Order page &bull;</h1>
@@ -62,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="flat">Flat number<span>*</span></label>
-                                <input type="text" name="flat" id="flat" pattern="^[^\-][0-9\-]*$" pattern-error-message="Positive numbers only" required>
+                                <input type="text" name="flat" id="flat" pattern="(?!.*-$)^[1-9]+[-0-9]*$" pattern-error-message="Positive numbers only" required>
                                 <span class="error"></span>
                             </div>
                         </div>

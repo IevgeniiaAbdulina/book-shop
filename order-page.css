@@ -108,7 +108,7 @@ label[for=name],
 input[type=text]:focus,
 input[type=number]:focus {
     outline: none;
-    border-bottom: 2px solid #CC4541;
+    border-bottom: 2px solid #404040;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -295,7 +295,8 @@ label.checkbox:hover::before {
 }
 
 /* ERROR STYLE */
-input.error {
+input[type=text].error,
+input[type=number].error {
     border-bottom: 2px solid #CC4541;
 }
 
@@ -326,10 +327,29 @@ div#customer-info {
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
+    width: fit-content;
+    margin: 0 auto;
 }
 
-#customer-info > h3 {
-    margin-bottom: 20px;
+.info-wrap {
+    margin: 20px 0 40px;
+}
+
+.info-wrap > p {
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 5px 0;
+    text-transform: uppercase;
+    color: #474544;
+}
+
+.info-wrap > p > span {
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: none;
+    color: #6A8279;
 }
 
 .info-message-icon {
@@ -344,7 +364,7 @@ div#customer-info {
     content: "";
     position: absolute;
     top: 97px;
-    left: 49.2%;
+    left: 48.4%;
     width: 3px;
     height: 22px;
     background-color: #6A8279;
@@ -355,11 +375,39 @@ div#customer-info {
     content: "";
     position: absolute;
     top: 102px;
-    left: 49.6%;
+    left: 49.1%;
     width: 32px;
     height: 3px;
     background-color: #6A8279;
     transform: rotate(-45deg);
+}
+
+.info-buttons {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-buttons > input[type=button] {
+    background: none;
+    border: 2px solid #6A8279;
+    color: #6A8279;
+    cursor: pointer;
+    display: inline-block;
+
+    font-size: 0.875em;
+    font-weight: bold;
+    outline: none;
+    padding: 20px 35px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.info-buttons > input[type=button]:hover {
+    background: #6A8279;
+    color: #F2F3EB;
 }
 
 @media screen and (max-width: 768px) {

@@ -13,6 +13,9 @@ function orderBooks(confirmOrder) {
     const orderWrapper = createElem('div', 'order-wrapper');
     const orderContainer = createElem('div', 'order-container', 'droptarget');
 
+    let emptyBagMessage = createElem('p', 'empty-bag', 'empty-bag');
+    emptyBagMessage.innerText = 'Drag and drop here';
+
     // Confirm order Button:
     const confirmForm = createElem('form', 'confirm-form', 'confirm');
     confirmForm.action = './order.html';
@@ -26,8 +29,9 @@ function orderBooks(confirmOrder) {
     inputSubmit.value = 'Confirm order';
     inputSubmit.addEventListener('click', (e) => {
         confirmOrder();
-    })
+    });
 
+    orderContainer.appendChild(emptyBagMessage);
     confirmForm.append(sum, inputSubmit);
     fragment
         .appendChild(orderWrapper)

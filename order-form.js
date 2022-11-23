@@ -1,8 +1,5 @@
 // Order Form Page
 // 6. The order form contains fields with own validation rules:
-// - Name (mandatory, the length not less than 4 symbols, strings only, without spaces)
-// - Surname (mandatory, the length not less than 5 symbols, strings only, without spaces)
-// - validation of form fields should run after user left the field (blur)
 
 const inputs = document.querySelectorAll('input');
 
@@ -106,6 +103,8 @@ const createInfoModal = (customerInfo) => {
     document.getElementById('customer-name').innerText = `${customerInfo.name} ${customerInfo.surname}`;
     document.getElementById('customer-address').innerText = `${customerInfo.street} street, house ${customerInfo.house}, flat ${customerInfo.flat}`;
     document.getElementById('delivery-date').innerText = `${customerInfo.date}`;
+    const totalPrice = localStorage.getItem('totalPrice');
+    document.getElementById('total-sum').innerText = `${totalPrice}`;
     document.getElementById('customer-info').style.display = 'flex';
 }
 
@@ -148,4 +147,23 @@ form.addEventListener('submit', function(event) {
     event.preventDefault();
     getData(event.target);
 
+});
+
+// onclick "Change" Button return to Order page:
+const clickHandlerChange = () => {
+    document.getElementById('header').style.display = 'block';
+    document.getElementById('order_form').style.display = 'block';
+    document.getElementById('customer-info').style.display = 'none';
+};
+
+const clickHandlerConfirm = () => {
+    localStorage.setItem('totalPrice', '');
+}
+
+document.getElementById('change-btn').addEventListener('click', (event) => {
+    clickHandlerChange();
+});
+
+document.getElementById('confirm-btn').addEventListener('click', (event) => {
+    clickHandlerConfirm();
 });

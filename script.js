@@ -45,7 +45,7 @@ window.onload = () => {
     const fragment = new DocumentFragment();
     fragment.append(
         createHeaderElement(),
-        createMainElement(confirmOrder),
+        createMainElement(confirmOrderCallback),
         createFooterElements()
     );
     document.body.prepend(fragment);
@@ -112,13 +112,19 @@ const removeItem = (id, bookCard) => {
     onRemoveBookFromOrderList(shoppingBag.booksInBag);
 }
 
-const totalSum = () => {
+const countTotalSum = () => {
     let shoppingList = shoppingBag.booksInBag;
-    let totalSum = 0;
+    let countTotalSum = 0;
 
     for (let item of shoppingList) {
-        totalSum += item.price;
+        countTotalSum += item.price;
     }
+
+    return countTotalSum;
+}
+
+const totalSum = () => {
+    let totalSum = countTotalSum();
 
     let sum = document.getElementById('total');
     sum.innerText = `Total: $ ${totalSum}`;
@@ -127,9 +133,12 @@ const totalSum = () => {
 
 // Confirm an order:
 // * When user click on Confirm order he appears in the Order page ( with form )
-const confirmOrder = () => {
-    console.log(' CONFIRM ORDER');
+
+const confirmOrderCallback = () => {
+    let totalPrice = countTotalSum();
+    localStorage.setItem('totalPrice', totalPrice);
 }
+// ----------------------------------------------------------
 
 // POP-UP MODAL WINDOW
 const hideModalWindowOnBlur = (event) => {

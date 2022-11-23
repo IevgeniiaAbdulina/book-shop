@@ -2,7 +2,7 @@ import { createCatalogElement } from './catalog.js';
 import { orderBooks } from './order-books.js'
 
 //  Create Catalog Element:
-function createMainElement(confirmOrder) {
+function createMainElement(confirmOrderCallback) {
     const createDiv = (className,) => {
         let elem = document.createElement('div');
         if (!className) return elem;
@@ -18,7 +18,7 @@ function createMainElement(confirmOrder) {
 
     divCatalogContainer.append(
         createCatalogElement(),
-        orderBooks(confirmOrder)
+        orderBooks(confirmOrderCallback)
     );
     fragment.appendChild(divCatalogContainer);
 

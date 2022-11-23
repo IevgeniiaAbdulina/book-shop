@@ -90,7 +90,7 @@ input[type=number] {
     font-size: 1.25rem;
     font-weight: 400;
     letter-spacing: 1px;
-    margin: 0 0 1.875em 0;
+    margin: 0 0 1.25em 0;
     padding: 0.875em 0;
     width: 100%;
     box-sizing: border-box;
@@ -309,14 +309,21 @@ input[type=date].error {
     position: relative;
     padding: 0;
     width: 100%;
-    font-size: 14px;
+    font-size: 1rem;
     color: #CC4541;
     box-sizing: border-box;
     border-color: #CC4541;
 }
 
+span.error {
+    display: block;
+    height: 24px;
+    margin: 0 0 10px;
+}
+
 .error.active {
-    bottom: 20px;
+    bottom: 10px;
+    display: block;
 }
 
 /* CUSTOMER INFO */

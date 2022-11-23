@@ -17,7 +17,14 @@ const createFooterElements = () => {
 
     const divAttribution = document.createElement('div');
     divAttribution.className = 'attribution';
-    divAttribution.innerHTML = '<p>Coded by Abdulina</p>';
+    const link = document.createElement('a');
+    link.href = 'https://github.com/IevgeniiaAbdulina';
+    link.target = '_blank';
+    const attributionText = document.createElement('p');
+    attributionText.innerText = 'Coded by Abdulina 2022';
+    divAttribution
+        .appendChild(link)
+        .appendChild(attributionText);
 
     tagFooter.append(footerContainer);
     footerContainer.append(navDescription, divAttribution);

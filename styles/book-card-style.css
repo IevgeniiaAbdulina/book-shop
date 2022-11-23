@@ -1,7 +1,7 @@
 /* BOOK CARD STYLE */
 .book-card {
     width: 247px;
-    height: 100%;
+    height: auto;
     overflow: hidden;
     background: white;
     border: 1px solid var(--green);
@@ -14,8 +14,14 @@
 .book-card img {
     width: 100%;
     height: 324px;
-    display: block;
-    align-self: middle;
+    object-fit: cover;
+    cursor: move;
+    transition: all 0.3s;
+}
+
+
+.book-card:hover img {
+    transform: scale(1.1);
 }
 
 .text-container {
@@ -107,9 +113,10 @@
     cursor: pointer;
     border: none;
     background: transparent;
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--green);
 }
 
 .info-button:hover {
-    color: var(--green);
+    color: rgba(0, 0, 0, 0.5);
+
 }

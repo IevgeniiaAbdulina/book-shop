@@ -1,8 +1,5 @@
 // Order Form Page
 // 6. The order form contains fields with own validation rules:
-// - Name (mandatory, the length not less than 4 symbols, strings only, without spaces)
-// - Surname (mandatory, the length not less than 5 symbols, strings only, without spaces)
-// - validation of form fields should run after user left the field (blur)
 
 const inputs = document.querySelectorAll('input');
 
@@ -31,7 +28,8 @@ let day = new Date().getDate();
 let minDate = new Date();
 minDate.setDate(day+1);
 let minDateStr = minDate.getFullYear() + '-' + (minDate.getMonth()+1) + '-' + minDate.getDate();
-document.getElementById('date').setAttribute('min', minDateStr);
+date.setAttribute('min', minDateStr);
+date.setAttribute('value', minDateStr);
 
 // To restrict future date:
 let maxDate = new Date();
@@ -101,9 +99,14 @@ function showError(inputToVerify, inputError) {
 }
 
 // 9. After user click on Complete button, he will see the summarized information:
-let infoMessage = document.getElementById('customer-info');
-let info = document.createElement('p');
-infoMessage.appendChild(info);
+const createInfoModal = (customerInfo) => {
+    document.getElementById('customer-name').innerText = `${customerInfo.name} ${customerInfo.surname}`;
+    document.getElementById('customer-address').innerText = `${customerInfo.street} street, house ${customerInfo.house}, flat ${customerInfo.flat}`;
+    document.getElementById('delivery-date').innerText = `${customerInfo.date}`;
+    const totalPrice = localStorage.getItem('totalPrice');
+    document.getElementById('total-sum').innerText = `${totalPrice}`;
+    document.getElementById('customer-info').style.display = 'flex';
+}
 
 function getData(form) {
     let formData = new FormData(form);
@@ -112,13 +115,7 @@ function getData(form) {
 
     let customerInfo = Object.fromEntries(formData);
 
-    let street = customerInfo.street;
-    let house = customerInfo.house;
-    let flat = customerInfo.flat;
-    let customerName = customerInfo.name;
-    let customerSurname = customerInfo.surname;
-
-    info.innerText = `The delivery address is ${street} street house ${house} flat ${flat}. Customer ${customerName} ${customerSurname}.`;
+    createInfoModal(customerInfo);
 
     // Display Info on the page:
     document.getElementById('header').style.display = 'none';
@@ -150,4 +147,23 @@ form.addEventListener('submit', function(event) {
     event.preventDefault();
     getData(event.target);
 
+});
+
+// onclick "Change" Button return to Order page:
+const clickHandlerChange = () => {
+    document.getElementById('header').style.display = 'block';
+    document.getElementById('order_form').style.display = 'block';
+    document.getElementById('customer-info').style.display = 'none';
+};
+
+const clickHandlerConfirm = () => {
+    localStorage.setItem('totalPrice', '');
+}
+
+document.getElementById('change-btn').addEventListener('click', (event) => {
+    clickHandlerChange();
+});
+
+document.getElementById('confirm-btn').addEventListener('click', (event) => {
+    clickHandlerConfirm();
 });

@@ -1,4 +1,11 @@
 import { findBook } from './bookProvider.js';
+import { showEmptyMessage } from './order-books.js'
+
+function onRemoveBookFromOrderList(orderList) {
+    if(orderList.length === 0) {
+        showEmptyMessage();
+    }
+}
 
 function createOrderList(orderList, removeItem) {
     let fragment = document.createDocumentFragment();
@@ -26,10 +33,10 @@ function createOrderList(orderList, removeItem) {
         }
     };
 
+    removeAllChildNodes(parent);
+
     for (let elem of orderListMap) {
         let book = findBook(elem[0]);
-
-        removeAllChildNodes(parent);
 
         const bookCard = document.createElement('div');
             bookCard.className = 'ordered-book-card';
@@ -54,7 +61,7 @@ function createOrderList(orderList, removeItem) {
             price.className = 'ordered-book-price';
 
             count = elem[1];
-            price.innerText = `Price: $ ${book.price*count} x ${count}`;
+            price.innerText = `Price: $ ${book.price} x ${count}`;
 
             let removeButton = document.createElement('div');
             removeButton.className = 'remove-button';
@@ -80,4 +87,4 @@ function createOrderList(orderList, removeItem) {
     return parent.appendChild(fragment);
 }
 
-export { createOrderList };
+export { createOrderList, onRemoveBookFromOrderList };

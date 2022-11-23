@@ -24,3 +24,12 @@ footer {
 .nav-description {
     width: 14rem;
 }
+
+.attribution a {
+    font-weight: 500;
+    color: inherit;
+}
+
+.attribution a:hover {
+    color: var(--green);
+}

@@ -4,8 +4,7 @@ import { createMainElement } from './modules/main.js';
 import { createFooterElements } from './modules/footer.js';
 import { createBookCard } from './modules/book-card.js';
 import { bookPopup } from './modules/bookPopup.js';
-import { createOrderList } from './modules/orderList.js';
-import { orderBooks } from './modules/order-books.js';
+import { createOrderList, onRemoveBookFromOrderList } from './modules/orderList.js';
 
 // Object with bought books:
 var shoppingBag = {
@@ -18,8 +17,8 @@ function allowDrop(event) {
 }
 
 function dragEnter(event) {
-    let targetElement = document.querySelector('.bag-button');
-    targetElement.classList.add('over');
+    let targetElement = document.getElementById('droptarget');
+    targetElement.classList.add('hover');
 }
 
 function drag(event, item) {
@@ -30,8 +29,8 @@ function drag(event, item) {
 function dragend(event) {
     event.target.style.opacity = '1';
 
-    let targetElement = document.querySelector('.bag-button');
-    targetElement.classList.remove('over');
+    let targetElement = document.getElementById('droptarget');
+    targetElement.classList.remove('hover');
 }
 
 function drop(event) {
@@ -46,7 +45,7 @@ window.onload = () => {
     const fragment = new DocumentFragment();
     fragment.append(
         createHeaderElement(),
-        createMainElement(confirmOrder),
+        createMainElement(confirmOrderCallback),
         createFooterElements()
     );
     document.body.prepend(fragment);
@@ -79,6 +78,7 @@ const fetchBooks = (parentDiv) => {
             targetElement.addEventListener('drop', drop);
     });
 }
+// ----------------------------------------------------------
 
 const buyBook = (bookId) => {
     let book = findBook(bookId);
@@ -95,6 +95,7 @@ const buyBook = (bookId) => {
     // total sum is updated:
     totalSum();
 }
+// ----------------------------------------------------------
 
 // remove book from the bag by the appropriate button:
 const removeItem = (id, bookCard) => {
@@ -106,25 +107,38 @@ const removeItem = (id, bookCard) => {
     // total sum is updated:
     totalSum();
     parent.removeChild(bookCard);
+
+    //if list is empty - show "drag & drop message"
+    onRemoveBookFromOrderList(shoppingBag.booksInBag);
+}
+
+const countTotalSum = () => {
+    let shoppingList = shoppingBag.booksInBag;
+    let countTotalSum = 0;
+
+    for (let item of shoppingList) {
+        countTotalSum += item.price;
+    }
+
+    return countTotalSum;
 }
 
 const totalSum = () => {
-    let shoppingList = shoppingBag.booksInBag;
-    let totalSum = 0;
-
-    for (let item of shoppingList) {
-        totalSum += item.price;
-    }
+    let totalSum = countTotalSum();
 
     let sum = document.getElementById('total');
     sum.innerText = `Total: $ ${totalSum}`;
 }
+// ----------------------------------------------------------
 
 // Confirm an order:
 // * When user click on Confirm order he appears in the Order page ( with form )
-const confirmOrder = () => {
-    console.log(' CONFIRM ORDER');
+
+const confirmOrderCallback = () => {
+    let totalPrice = countTotalSum();
+    localStorage.setItem('totalPrice', totalPrice);
 }
+// ----------------------------------------------------------
 
 // POP-UP MODAL WINDOW
 const hideModalWindowOnBlur = (event) => {

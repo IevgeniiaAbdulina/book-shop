@@ -1,10 +1,11 @@
-function orderBooks(confirmOrder) {
-    const createElem = (tagName, className, id) => {
-        let elem = document.createElement(tagName);
-        if(className) elem.className = className;
-        if(id) elem.id = id;
-        return elem;
-    };
+const createElem = (tagName, className, id) => {
+    let elem = document.createElement(tagName);
+    if(className) elem.className = className;
+    if(id) elem.id = id;
+    return elem;
+};
+
+function orderBooks(confirmOrderCallback) {
     let fragment = new DocumentFragment();
 
     const orderHeader = createElem('h2', 'order-header');
@@ -13,20 +14,22 @@ function orderBooks(confirmOrder) {
     const orderWrapper = createElem('div', 'order-wrapper');
     const orderContainer = createElem('div', 'order-container', 'droptarget');
 
+    showEmptyMessage(orderContainer);
+
     // Confirm order Button:
     const confirmForm = createElem('form', 'confirm-form', 'confirm');
     confirmForm.action = './order.html';
-    confirmForm.target = '_blank';
+    confirmForm.method = 'GET';
 
     const sum = createElem('label', 'total-sum', 'total');
     sum.innerText = 'Total: $ 0';
 
-    const inputSubmit = createElem('input', 'confirm-order-button');
+    const inputSubmit = createElem('input', 'confirm-order-button', 'input-submit');
     inputSubmit.type = 'submit';
     inputSubmit.value = 'Confirm order';
     inputSubmit.addEventListener('click', (e) => {
-        confirmOrder();
-    })
+        confirmOrderCallback();
+    });
 
     confirmForm.append(sum, inputSubmit);
     fragment
@@ -40,4 +43,13 @@ function orderBooks(confirmOrder) {
     return fragment;
 }
 
-export { orderBooks };
+const showEmptyMessage = (parent) => {
+    let emptyBagMessage = createElem('p', 'empty-bag', 'empty-bag');
+    emptyBagMessage.innerText = 'Drag and drop here';
+    if(!parent) {
+        parent = document.getElementById('droptarget');
+    }
+    parent.appendChild(emptyBagMessage);
+}
+
+export { orderBooks, showEmptyMessage };
